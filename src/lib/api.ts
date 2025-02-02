@@ -16,7 +16,7 @@ export async function fetchAttendanceSummary(params: {
   }
   
 
-  import type { User, UserDetail } from "@/app/types/user"
+  import type { User } from "@/app/types/user"
 
   const API_URL = "http://202.178.125.77:5444/api/v1"
   
@@ -28,17 +28,7 @@ export async function fetchAttendanceSummary(params: {
     return response.json()
   }
   
-//   export async function getUserDetail(username: string): Promise<UserDetail | null> {
-//     const response = await fetch(`${API_URL}/api/v1/attendance/user/${username}`)
-//     if (response.status === 404) {
-//       return null
-//     }
-//     if (!response.ok) {
-//       throw new Error("Failed to fetch user detail")
-//     }
-//     return response.json()
-//   }
-  
+
   export async function deleteUser(username: string): Promise<void> {
     const response = await fetch(`${API_URL}/api/v1/attendance/user/${username}`, {
       method: "DELETE",
