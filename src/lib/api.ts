@@ -10,7 +10,7 @@ export async function fetchAttendanceSummary(params: {
       if (value) searchParams.append(key, value.toString());
     });
   
-    const response = await fetch(`http://localhost:8000/api/v1/api/v1/attendance/monthly-summary?${searchParams}`);
+    const response = await fetch(`http://202.178.125.77:5444/api/v1/api/v1/attendance/monthly-summary?${searchParams}`);
     if (!response.ok) throw new Error('Failed to fetch attendance summary');
     return response.json();
   }
@@ -18,7 +18,7 @@ export async function fetchAttendanceSummary(params: {
 
   import type { User, UserDetail } from "@/app/types/user"
 
-  const API_URL = "http://localhost:8000/api/v1"
+  const API_URL = "http://202.178.125.77:5444/api/v1"
   
   export async function getUsersSummary(): Promise<User[]> {
     const response = await fetch(`${API_URL}/api/v1/attendance/users`)
@@ -63,9 +63,9 @@ export async function fetchAttendanceSummary(params: {
     });
   
     if (params.export_type === 'json') {
-      const response = await fetch(`http://localhost:8000/api/v1/api/v1/attendance/monthly-summary-export?${searchParams}`);
+      const response = await fetch(`http://202.178.125.77:5444/api/v1/api/v1/attendance/monthly-summary-export?${searchParams}`);
       return response.json();
     } else {
-      window.location.href = `http://localhost:8000/api/v1/api/v1/attendance/monthly-summary-export?${searchParams}`;
+      window.location.href = `http://202.178.125.77:5444/api/v1/api/v1/attendance/monthly-summary-export?${searchParams}`;
     }
   }
