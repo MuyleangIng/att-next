@@ -2,8 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  compress: true,
   poweredByHeader: false,
   typescript: {
     ignoreBuildErrors: true,
@@ -11,17 +9,13 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
-    unoptimized: true,
-  },
-  output: 'standalone',
+  // Remove swcMinify as it's causing issues
   experimental: {
-    // Experimental features
-    optimizeCss: true,
+    // Remove optimizeCss since it requires critters
     scrollRestoration: true,
-    largePageDataBytes: 128 * 1000, // 128KB
+    largePageDataBytes: 128 * 1000,
   },
-  // Ignore specific files/directories
+  // Add required dependency
   webpack: (config) => {
     config.ignoreWarnings = [
       { message: /Critical dependency/i },
